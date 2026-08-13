@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+  Time Card — Office Presence Planner
+  Author: Gaurav Mundra
+  Repo:   Office Presence Planner
+  License: MIT
+
+  Know exactly when you can clock out. Set a weekly presence requirement
+  and office-day count once; each day, enter your in-time and hours
+  completed so far, and the board tells you when to leave.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Gaurav Mundra">
+<meta name="description" content="Time Card — a simple office presence planner by Gaurav Mundra. Tells you exactly when to clock out based on your weekly hour requirement.">
+<title>Time Card — Office Presence Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Time Card — Office Presence Planner — built by Gaurav Mundra -->
+<main class="wrap">
+  <header>
+    <div>
+      <span class="eyebrow">Time Card</span>
+      <h1>Know exactly when you can clock out.</h1>
+      <p class="sub">Set your weekly requirement once. Each office day, punch in your start time and running total — <b>the board updates as you type.</b></p>
+    </div>
+    <div class="savenote" id="saveNote"><span class="dot"></span>Remembered on this device</div>
+  </header>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Weekly requirement</h2>
+      <div class="fields">
+        <label class="field">Total presence required (hours)
+          <input id="required" type="number" min="0" step="0.25" value="24.75">
+        </label>
+        <label class="field">Office days required
+          <input id="days" type="number" min="1" max="7" step="1" value="3">
+        </label>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Where you're at</h2>
+      <div class="fields">
+        <label class="field">Which day is today?</label>
+        <div class="pillrow" id="dayPills"></div>
+        <label class="field" id="completedLabel">Hours completed so far
+          <input id="completed" type="number" min="0" step="0.25" value="8.25" placeholder="e.g. 8.25">
+        </label>
+        <label class="field">Today's in-time
+          <input id="time" type="time" value="09:00">
+        </label>
+      </div>
+    </div>
+
+    <div class="card full">
+      <div class="stats">
+        <div class="stat"><div class="k">Required</div><div class="v" id="reqOut">—</div></div>
+        <div class="stat"><div class="k">Completed</div><div class="v" id="doneOut">—</div></div>
+        <div class="stat"><div class="k">Remaining</div><div class="v" id="remainOut">—</div></div>
+      </div>
+
+      <div class="board">
+        <div class="perf"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="label">Leave office at</div>
+        <div class="time" id="exitTime">—</div>
+        <p class="note" id="exitNote">—</p>
+
+        <div class="punchcard" id="punchcard"></div>
+      </div>
+    </div>
+  </section>
+
+  <p class="credit">Time Card — built by Gaurav Mundra</p>
+</main>
+
+<script src="script.min.js"></script>
+</body>
+</html>
